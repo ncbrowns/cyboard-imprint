@@ -115,6 +115,24 @@
 
             label = "CTRL_SHIFT_TAB";
         };
+
+        tab_switcher: tab_switcher {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&tog 8>,
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&tog 8>;
+
+            label = "TAB_SWITCHER";
+        };
     };
 
     keymap {
@@ -134,13 +152,13 @@
 
         Navigation {
             bindings = <
-&none      &kp LA(LC(F1))  &kp LA(LC(F2))  &kp LA(LC(F3))   &none        &none                  &kp TILDE       &kp INS           &none             &none              &none           &none
-&none      &none           &kp LC(W)       &ctrl_shift_tab  &kp LC(TAB)  &kp F5                 &kp HOME        &kp SPACE         &kp SPACE         &kp END            &thanks_pat     &kp LC(LA(K))
-&none      &kp LGUI        &kp LALT        &kp LCTRL        &kp LSHFT    &none                  &kp LEFT        &kp SPACE         &kp SPACE         &kp RIGHT          &kp GRAVE       &kp LC(PAUSE_BREAK)
-&kp LSHFT  &kp LC(Z)       &kp LC(X)       &kp LC(C)        &kp LC(V)    &browser_url           &kp LEFT_BRACE  &kp RIGHT_BRACE   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &triple_bquote  &kp RSHFT
-                           &kp LEFT        &kp RIGHT                                                                              &kp UP            &kp DOWN
-                                                            &none        &none         &none    &kp C_VOL_DN    &kp C_MUTE        &kp C_VOL_UP
-                                                            &none        &none         &none    &kp C_PREV      &kp C_PLAY_PAUSE  &kp C_NEXT
+&none      &kp LA(LC(F1))  &kp LA(LC(F2))  &kp LA(LC(F3))   &none        &none                   &kp TILDE       &kp INS           &none             &none              &none           &none
+&none      &none           &kp LC(W)       &ctrl_shift_tab  &kp LC(TAB)  &kp F5                  &kp HOME        &kp PAGE_DOWN     &kp PG_UP         &kp END            &thanks_pat     &kp LC(LA(K))
+&none      &kp LGUI        &kp LALT        &kp LCTRL        &kp LSHFT    &tab_switcher           &kp LEFT        &kp DOWN          &kp UP            &kp RIGHT          &kp GRAVE       &kp LC(PAUSE_BREAK)
+&kp LSHFT  &kp LC(Z)       &kp LC(X)       &kp LC(C)        &kp LC(V)    &browser_url            &kp LEFT_BRACE  &kp RIGHT_BRACE   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &triple_bquote  &kp RSHFT
+                           &kp LEFT        &kp RIGHT                                                                               &kp UP            &kp DOWN
+                                                            &none        &none          &none    &kp C_VOL_DN    &kp C_MUTE        &kp C_VOL_UP
+                                                            &none        &none          &none    &kp C_PREV      &kp C_PLAY_PAUSE  &kp C_NEXT
             >;
         };
 
@@ -215,6 +233,18 @@
                                 &kp N7  &kp N8  &kp N9    &kp N0  &kp N1  &kp N2
             >;
         };
+
+        TabSwitcher {
+            bindings = <
+&trans  &trans  &trans    &trans     &trans  &trans            &trans    &trans         &trans     &trans     &trans  &trans
+&trans  &trans  &trans    &trans     &trans  &trans            &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END    &trans  &trans
+&trans  &trans  &trans    &trans     &trans  &trans            &kp LEFT  &kp DOWN       &kp UP     &kp RIGHT  &trans  &trans
+&trans  &trans  &trans    &trans     &trans  &trans            &trans    &trans         &trans     &trans     &trans  &trans
+                &kp LEFT  &kp RIGHT                                                     &kp UP     &kp DOWN
+                                     &trans  &trans  &trans    &trans    &trans         &trans
+                                     &trans  &trans  &trans    &trans    &trans         &trans
+            >;
+        };
     };
 };
 
@@ -228,10 +258,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,
         <&zip_xy_scaler 1 3>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
