@@ -79,18 +79,92 @@
         };
     };
 
+    macros {
+        thanks_pat: thanks_pat {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(T) &kp H &kp A &kp N &kp K &kp S &kp COMMA &kp LS(RET) &kp LS(P) &kp A &kp T>;
+            label = "THANKS_PAT";
+        };
+
+        triple_bquote: triple_bquote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE>;
+            label = "TRIPLE_BQUOTE";
+        };
+
+        browser_url: browser_url {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(L) &kp LC(C) &kp ESC &kp ESC>;
+            label = "BROWSER_URL";
+        };
+
+        ctrl_shift_tab: ctrl_shift_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_wait_time 2>,
+                <&macro_press>,
+                <&kp LCTRL &kp LSHFT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_release>,
+                <&kp LCTRL &kp LSHFT>;
+
+            label = "CTRL_SHIFT_TAB";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp EQUAL  &kp N1            &kp N2            &kp N3             &kp N4                   &kp N5              &kp N6     &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
-&kp TAB    &kp Q             &kp W             &kp E              &kp R                    &kp T               &kp Y      &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
-&kp LCTRL  &hrm_left A LWIN  &hrm_left S LALT  &hrm_left D LCTRL  &hrm_left_index F LSHFT  &kp G               &kp H      &hrm_right_index J RSHFT  &hrm_right K RCTRL  &hrm_right L RALT  &hrm_right SEMI RWIN  &kp SQT
-&kp LSHFT  &kp Z             &kp X             &kp C              &kp V                    &kp B               &kp N      &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &kp RSHFT
-                             &kp LGUI          &kp LALT                                                                                             &kp LBKT            &kp RBKT
-                                                                  &kp RET                  &kp DEL  &kp ESC    &kp GRAVE  &kp BSPC                  &kp SPACE
-                                                                  &kp LGUI                 &mo 1    &mo 2      &kp CAPS   &mo 2                     &mo 1
+&kp EQUAL  &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                          &kp N6    &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
+&kp TAB    &kp Q             &kp W             &kp E              &kp R                     &kp T                           &kp Y     &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
+&kp LCTRL  &hrm_left A LWIN  &hrm_left S LALT  &hrm_left D LCTRL  &hrm_left_index F LSHFT   &kp G                           &kp H     &hrm_right_index J RSHFT  &hrm_right K RCTRL  &hrm_right L RALT  &hrm_right SEMI RWIN  &kp SQT
+&kp LSHFT  &kp Z             &kp X             &kp C              &kp V                     &kp B                           &kp N     &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &kp RSHFT
+                             &kp LGUI          &kp LALT                                                                                                         &kp LBKT            &kp RBKT
+                                                                  &kp LCTRL                 &kp LALT            &kp LWIN    &kp RWIN  &kp RALT                  &kp RCTRL
+                                                                  &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 5       &mo 5     &thumb_layer 3 ENTER      &kp SPACE
+            >;
+        };
+
+        Navigation {
+            bindings = <
+&none      &kp LA(LC(F1))  &kp LA(LC(F2))  &kp LA(LC(F3))   &none        &none                  &kp TILDE       &kp INS           &none             &none              &none           &none
+&none      &none           &kp LC(W)       &ctrl_shift_tab  &kp LC(TAB)  &kp F5                 &kp HOME        &kp SPACE         &kp SPACE         &kp END            &thanks_pat     &kp LC(LA(K))
+&none      &kp LGUI        &kp LALT        &kp LCTRL        &kp LSHFT    &none                  &kp LEFT        &kp SPACE         &kp SPACE         &kp RIGHT          &kp GRAVE       &kp LC(PAUSE_BREAK)
+&kp LSHFT  &kp LC(Z)       &kp LC(X)       &kp LC(C)        &kp LC(V)    &browser_url           &kp LEFT_BRACE  &kp RIGHT_BRACE   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &triple_bquote  &kp RSHFT
+                           &kp LEFT        &kp RIGHT                                                                              &kp UP            &kp DOWN
+                                                            &none        &none         &none    &kp C_VOL_DN    &kp C_MUTE        &kp C_VOL_UP
+                                                            &none        &none         &none    &kp C_PREV      &kp C_PLAY_PAUSE  &kp C_NEXT
+            >;
+        };
+
+        Function {
+            bindings = <
+&trans  &trans    &trans    &trans     &trans     &trans            &trans           &trans  &trans   &trans   &trans   &trans
+&trans  &trans    &trans    &trans     &trans     &trans            &kp PRINTSCREEN  &kp F9  &kp F10  &kp F11  &kp F12  &trans
+&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans            &kp INS          &kp F5  &kp F6   &kp F7   &kp F8   &trans
+&trans  &trans    &trans    &trans     &trans     &trans            &kp PAUSE_BREAK  &kp F1  &kp F2   &kp F3   &kp F4   &trans
+                  &trans    &trans                                                           &trans   &trans
+                                       &trans     &trans  &trans    &trans           &trans  &trans
+                                       &trans     &trans  &trans    &trans           &trans  &trans
+            >;
+        };
+
+        Symbol {
+            bindings = <
+&none      &none  &none  &none           &none            &none           &none  &none      &none      &none     &none     &none
+&none      &none  &none  &kp LPAR        &kp RPAR         &none           &none  &none      &none      &none     &none     &none
+&none      &none  &none  &kp LEFT_BRACE  &kp RIGHT_BRACE  &none           &none  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &none
+&kp LSHFT  &none  &none  &kp LBKT        &kp RBKT         &none           &none  &none      &none      &none     &none     &kp RSHFT
+                  &none  &none                                                              &none      &none
+                                         &none            &none  &none    &none  &none      &none
+                                         &none            &none  &none    &none  &none      &none
             >;
         };
 
@@ -111,7 +185,7 @@
 &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4              &trans          &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
 &sys_reset   &trans        &trans        &trans        &trans        &studio_unlock            &studio_unlock  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
 &bootloader  &trans        &trans        &trans        &trans        &trans                    &trans          &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
-&to 4        &trans        &trans        &trans        &trans        &trans                    &trans          &trans           &trans           &trans           &trans           &to 4
+&to 7        &trans        &trans        &trans        &trans        &trans                    &trans          &trans           &trans           &trans           &trans           &to 7
                            &trans        &trans                                                                                 &trans           &trans
                                                        &trans        &trans          &trans    &trans          &trans           &trans
                                                        &trans        &trans          &trans    &trans          &trans           &trans
@@ -141,18 +215,6 @@
                                 &kp N7  &kp N8  &kp N9    &kp N0  &kp N1  &kp N2
             >;
         };
-
-        Function {
-            bindings = <
-&trans  &trans    &trans    &trans     &trans     &trans            &trans  &trans  &trans   &trans   &trans   &trans
-&trans  &trans    &trans    &trans     &trans     &trans            &trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans            &trans  &kp F5  &kp F6   &kp F7   &kp F8   &trans
-&trans  &trans    &trans    &trans     &trans     &trans            &trans  &kp F1  &kp F2   &kp F3   &kp F4   &trans
-                  &trans    &trans                                                  &trans   &trans
-                                       &trans     &trans  &trans    &trans  &trans  &trans
-                                       &trans     &trans  &trans    &trans  &trans  &trans
-            >;
-        };
     };
 };
 
@@ -166,10 +228,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,
         <&zip_xy_scaler 1 3>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
