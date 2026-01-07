@@ -475,63 +475,37 @@
 };
 
 // Configure the left trackball as a scroll wheel.
-
 &trackball_central_listener {
     input-processors =
         <&zip_xy_scaler 1 18>,
         <&zip_xy_to_scroll_mapper>,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-
-    MouseSlow {
-        layers = <10>;
-        input-processors =
-            <&zip_xy_scaler 1 36>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-
-    MouseFast {
-        layers = <11>;
-        input-processors =
-            <&zip_xy_scaler 1 9>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-
-    MouseWarp {
-        layers = <12>;
-        input-processors =
-            <&zip_xy_scaler 1 3>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
 };
 
 // Configure the right trackball to operate as a mouse pointer.
-
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
 
-    MouseSlow {
-        layers = <10>;
-        input-processors = <&zip_xy_scaler 1 9>;
-    };
-
-    MouseFast {
-        layers = <11>;
-        input-processors = <&zip_xy_scaler 3 1>;
-    };
-
-    MouseWarp {
-        layers = <12>;
-        input-processors = <&zip_xy_scaler 9 1>;
-    };
-
     MouseScroller {
-        layers = <13>;
+        layers = <10>;
         input-processors =
             <&zip_xy_scaler 1 18>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+    };
+
+    MouseSlow {
+        layers = <11>;
+        input-processors = <&zip_xy_scaler 1 9>;
+    };
+
+    MouseFast {
+        layers = <12>;
+        input-processors = <&zip_xy_scaler 3 1>;
+    };
+
+    MouseWarp {
+        layers = <13>;
+        input-processors = <&zip_xy_scaler 9 1>;
     };
 };
