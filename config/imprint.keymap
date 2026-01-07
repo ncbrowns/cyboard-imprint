@@ -396,7 +396,7 @@
 &mo 13  &mswarp LGUI 0  &msfast LALT 0  &msnormal LCTRL 0  &msslow LSHFT 0  &tab_switcher               &none  &none  &none  &none  &none  &none
 &none   &kp LC(Z)       &kp LC(X)       &kp LC(C)          &kp LC(V)        &browser_url                &none  &none  &none  &none  &none  &none
                         &none           &none                                                                         &none  &none
-                                                           &none            &none          &to 0        &to 0  &none  &none
+                                                           &mkp MB4         &mkp MB5       &to 0        &to 0  &none  &none
                                                            &mkp LCLK        &mkp RCLK      &mkp MCLK    &none  &none  &none
             >;
         };
@@ -408,7 +408,7 @@
 &none  &none  &none  &none  &none  &none           &none      &msslow LSHFT 0  &msnormal LCTRL 0  &msfast LALT 0  &mswarp LGUI 0  &none
 &none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
               &none  &none                                                     &none              &none
-                            &none  &none  &to 0    &to 0      &none            &none
+                            &none  &none  &to 0    &to 0      &mkp MB4         &mkp MB5
                             &none  &none  &none    &mkp MCLK  &mkp RCLK        &mkp LCLK
             >;
         };
