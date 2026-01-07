@@ -148,6 +148,16 @@
             tapping-term-ms = <200>;
             flavor = "balanced";
         };
+
+        mslayerswitch: mslayerswitch {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MSLAYERSWITCH";
+            bindings = <&to>, <&to>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     macros {
@@ -285,13 +295,13 @@
 
         Home {
             bindings = <
-&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                       &kp N6  &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
-&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                        &kp Y   &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
-&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                        &kp H   &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
-&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                        &kp N   &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
-                               &kp LEFT          &kp RIGHT                                                                                                   &kp UP              &kp DOWN
-                                                                    &to 8                     &none               &none    &none   &none                     &to 9
-                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4    &mo 4   &thumb_layer 3 ENTER      &kp SPACE
+&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                                    &kp N6              &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
+&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                                     &kp Y               &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
+&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                                     &kp H               &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
+&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                                     &kp N               &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
+                               &kp LEFT          &kp RIGHT                                                                                                                            &kp UP              &kp DOWN
+                                                                    &none                     &none               &mslayerswitch 0 9    &mslayerswitch 0 8  &none                     &none
+                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4                 &mo 4               &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
 
@@ -314,7 +324,7 @@
 &trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans            &kp INS          &kp F5  &kp F6   &kp F7   &kp F8   &trans
 &trans  &trans    &trans    &trans     &trans     &trans            &kp PAUSE_BREAK  &kp F1  &kp F2   &kp F3   &kp F4   &trans
                   &trans    &trans                                                           &trans   &trans
-                                       &trans     &trans  &trans    &trans           &trans  &trans
+                                       &trans     &trans  &to 0     &to 0            &trans  &trans
                                        &trans     &trans  &trans    &trans           &trans  &trans
             >;
         };
@@ -326,7 +336,7 @@
 &none      &none  &none  &kp LEFT_BRACE  &kp RIGHT_BRACE  &none           &none  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &none
 &kp LSHFT  &none  &none  &kp LBKT        &kp RBKT         &none           &none  &none      &none      &none     &none     &kp RSHFT
                   &none  &none                                                              &none      &none
-                                         &none            &none  &none    &none  &none      &none
+                                         &none            &none  &to 0    &to 0  &none      &none
                                          &none            &none  &none    &none  &none      &none
             >;
         };
@@ -350,44 +360,44 @@
 &trans  &trans  &trans    &trans     &trans  &trans            &kp LEFT  &kp DOWN       &kp UP     &kp RIGHT  &trans  &trans
 &trans  &trans  &trans    &trans     &trans  &trans            &trans    &trans         &trans     &trans     &trans  &trans
                 &kp LEFT  &kp RIGHT                                                     &kp UP     &kp DOWN
-                                     &trans  &trans  &trans    &trans    &trans         &trans
+                                     &trans  &trans  &to 0     &to 0     &trans         &trans
                                      &trans  &trans  &trans    &trans    &trans         &trans
             >;
         };
 
         CapsWord {
             bindings = <
-&cwexit EQUAL  &kp N1      &kp N2        &kp N3         &kp N4         &kp N5                          &kp N6        &kp N7         &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
-&cwexit TAB    &cwshift Q  &cwshift W    &cwshift E     &cwshift R     &cwshift T                      &cwshift Y    &cwshift U     &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
-&cwexit ESC    &cwshift A  &cwshift S    &cwshift D     &cwshift F     &cwshift G                      &cwshift H    &cwshift J     &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
-&mo 8          &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                      &cwshift N    &cwshift M     &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &mo 8
-                           &cwexit LEFT  &cwexit RIGHT                                                                              &cwexit UP     &cwexit DOWN
-                                                        &cwexit LCTRL  &cwexit LALT    &cwexit LWIN    &cwexit RWIN  &cwexit RALT   &cwexit RCTRL
-                                                        &kp BACKSPACE  &cwexit DELETE  &cwmagic        &cwmagic      &cwexit ENTER  &cwexit SPACE
+&cwexit EQUAL  &kp N1      &kp N2        &kp N3         &kp N4         &kp N5                      &kp N6      &kp N7         &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
+&cwexit TAB    &cwshift Q  &cwshift W    &cwshift E     &cwshift R     &cwshift T                  &cwshift Y  &cwshift U     &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
+&cwexit ESC    &cwshift A  &cwshift S    &cwshift D     &cwshift F     &cwshift G                  &cwshift H  &cwshift J     &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
+&mo 8          &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                  &cwshift N  &cwshift M     &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &mo 8
+                           &cwexit LEFT  &cwexit RIGHT                                                                        &cwexit UP     &cwexit DOWN
+                                                        &none          &none           &to 0       &to 0       &none          &none
+                                                        &kp BACKSPACE  &cwexit DELETE  &cwmagic    &cwmagic    &cwexit ENTER  &cwexit SPACE
             >;
         };
 
         CapsWordShifted {
             bindings = <
-&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4         &cwexitshift N5                           &cwexitshift N6    &cwexitshift N7     &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
-&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R              &cwshift T                                &cwshift Y         &cwshift U          &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
-&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F              &cwshift G                                &cwshift H         &cwshift J          &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
-&none               &cwshift Z       &cwshift X         &cwshift C          &cwshift V              &cwshift B                                &cwshift N         &cwshift M          &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &none
-                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                           &cwexitshift UP     &cwexitshift DOWN
-                                                                            &cwexitshift LCTRL      &cwexitshift LALT    &cwexitshift LWIN    &cwexitshift RWIN  &cwexitshift RALT   &cwexitshift RCTRL
-                                                                            &cwexitshift BACKSPACE  &cwexitshift DELETE  &cwmagic             &cwmagic           &cwexitshift ENTER  &cwexitshift SPACE
+&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4         &cwexitshift N5                  &cwexitshift N6  &cwexitshift N7     &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
+&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R              &cwshift T                       &cwshift Y       &cwshift U          &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
+&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F              &cwshift G                       &cwshift H       &cwshift J          &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
+&none               &cwshift Z       &cwshift X         &cwshift C          &cwshift V              &cwshift B                       &cwshift N       &cwshift M          &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &none
+                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                &cwexitshift UP     &cwexitshift DOWN
+                                                                            &none                   &none                &to 0       &to 0            &none               &none
+                                                                            &cwexitshift BACKSPACE  &cwexitshift DELETE  &cwmagic    &cwmagic         &cwexitshift ENTER  &cwexitshift SPACE
             >;
         };
 
         TrackballMouse {
             bindings = <
-&none  &kp LC(LA(F1))  &kp LC(LA(F2))  &kp LA(LC(F3))     &none            &none                       &none  &none  &none  &none  &none  &none
-&none  &none           &kp LC(W)       &ctrl_shift_tab    &kp LC(TAB)      &kp F5                      &none  &none  &none  &none  &none  &none
-&none  &mswarp LGUI 0  &msfast LALT 0  &msnormal LCTRL 0  &msslow LSHFT 0  &tab_switcher               &none  &none  &none  &none  &none  &none
-&none  &kp LC(Z)       &kp LC(X)       &kp LC(C)          &kp LC(V)        &browser_url                &none  &none  &none  &none  &none  &none
-                       &none           &none                                                                         &none  &none
-                                                          &to 0            &none          &none        &none  &none  &none
-                                                          &mkp LCLK        &mkp RCLK      &mkp MCLK    &none  &none  &none
+&none   &kp LC(LA(F1))  &kp LC(LA(F2))  &kp LA(LC(F3))     &none            &none                       &none  &none  &none  &none  &none  &none
+&none   &none           &kp LC(W)       &ctrl_shift_tab    &kp LC(TAB)      &kp F5                      &none  &none  &none  &none  &none  &none
+&mo 13  &mswarp LGUI 0  &msfast LALT 0  &msnormal LCTRL 0  &msslow LSHFT 0  &tab_switcher               &none  &none  &none  &none  &none  &none
+&none   &kp LC(Z)       &kp LC(X)       &kp LC(C)          &kp LC(V)        &browser_url                &none  &none  &none  &none  &none  &none
+                        &none           &none                                                                         &none  &none
+                                                           &none            &none          &to 0        &to 0  &none  &none
+                                                           &mkp LCLK        &mkp RCLK      &mkp MCLK    &none  &none  &none
             >;
         };
 
@@ -398,7 +408,7 @@
 &none  &none  &none  &none  &none  &none           &none      &msslow LSHFT 0  &msnormal LCTRL 0  &msfast LALT 0  &mswarp LGUI 0  &none
 &none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
               &none  &none                                                     &none              &none
-                            &none  &none  &none    &none      &none            &to 0
+                            &none  &none  &to 0    &to 0      &none            &none
                             &none  &none  &none    &mkp MCLK  &mkp RCLK        &mkp LCLK
             >;
         };
@@ -438,15 +448,29 @@
                                 &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
+
+        MouseScroller {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans                                            &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
     };
 };
 
 // Configure the left trackball as a scroll wheel.
+
 &trackball_central_listener {
     input-processors =
         <&zip_xy_scaler 1 18>,
         <&zip_xy_to_scroll_mapper>,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+
     MouseSlow {
         layers = <10>;
         input-processors =
@@ -454,6 +478,7 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
+
     MouseFast {
         layers = <11>;
         input-processors =
@@ -461,6 +486,7 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
+
     MouseWarp {
         layers = <12>;
         input-processors =
@@ -471,16 +497,20 @@
 };
 
 // Configure the right trackball to operate as a mouse pointer.
+
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
+
     MouseSlow {
         layers = <10>;
         input-processors = <&zip_xy_scaler 1 9>;
     };
+
     MouseFast {
         layers = <11>;
         input-processors = <&zip_xy_scaler 3 1>;
     };
+
     MouseWarp {
         layers = <12>;
         input-processors = <&zip_xy_scaler 9 1>;
