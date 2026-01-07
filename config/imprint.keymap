@@ -78,18 +78,6 @@
             bindings = <&mo>, <&kp>;
         };
 
-        thumb_tap_hold: thumb_tap_hold {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THUMB_TAP_HOLD";
-            #binding-cells = <2>;
-            tapping-term-ms = <500>;
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <250>;
-            flavor = "balanced";
-            hold-trigger-on-release;
-            bindings = <&kp>, <&kp>;
-        };
-
         cwminus: cwminus {
             compatible = "zmk,behavior-hold-tap";
             label = "CWMINUS";
@@ -106,6 +94,59 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHIFT>, <&to 7>;
+        };
+
+        layer_off: layer_off {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "LAYER_OFF";
+            #binding-cells = <1>;
+            toggle-mode = "off";
+        };
+
+        layer_on: layer_on {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "LAYER_ON";
+            #binding-cells = <1>;
+        };
+
+        msslow: msslow {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MSSLOW";
+            bindings = <&kp>, <&mouse_scroll_slow>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
+
+        msnormal: msnormal {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MSNORMAL";
+            bindings = <&kp>, <&mouse_scroll_normal>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
+
+        msfast: msfast {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MSFAST";
+            bindings = <&kp>, <&mouse_scroll_fast>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
+
+        mswarp: mswarp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MSWARP";
+            bindings = <&kp>, <&mouse_scroll_warp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
         };
     };
 
@@ -209,6 +250,34 @@
             bindings = <&tog 7 &mo 4>;
             label = "CWMAGIC";
         };
+
+        mouse_scroll_slow: mouse_slow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&layer_on 10 &layer_off 11 &layer_off 12>;
+            label = "MOUSE_SLOW";
+        };
+
+        mouse_scroll_normal: mouse_normal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&layer_off 10 &layer_off 11 &layer_off 12>;
+            label = "MOUSE_NORMAL";
+        };
+
+        mouse_scroll_fast: mouse_scroll_fast {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&layer_off 10 &layer_on 11 &layer_off 12>;
+            label = "MOUSE_SCROLL_FAST";
+        };
+
+        mouse_scroll_warp: mouse_scroll_warp {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&layer_off 10 &layer_off 11 &layer_on 12>;
+            label = "MOUSE_SCROLL_WARP";
+        };
     };
 
     keymap {
@@ -216,13 +285,13 @@
 
         Home {
             bindings = <
-&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                     &kp N5                          &kp N6    &kp N7                    &kp N8                     &kp N9             &kp N0                &kp MINUS
-&kp TAB      &kp Q             &kp W             &kp E              &kp R                      &kp T                           &kp Y     &kp U                     &kp I                      &kp O              &kp P                 &kp BSLH
-&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F    &kp G                           &kp H     &hrm_right_index RSHFT J  &hrm_right RCTRL K         &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
-&shift_caps  &kp Z             &kp X             &kp C              &kp V                      &kp B                           &kp N     &kp M                     &kp COMMA                  &kp DOT            &kp FSLH              &shift_caps
-                               &kp LEFT          &kp RIGHT                                                                                                         &kp UP                     &kp DOWN
-                                                                    &thumb_tap_hold LCTRL ESC  &kp LALT            &kp LWIN    &kp RWIN  &kp RALT                  &thumb_tap_hold RCTRL TAB
-                                                                    &thumb_layer 1 BACKSPACE   &thumb_layer 2 DEL  &mo 4       &mo 4     &thumb_layer 3 ENTER      &kp SPACE
+&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                       &kp N6  &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
+&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                        &kp Y   &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
+&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                        &kp H   &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
+&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                        &kp N   &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
+                               &kp LEFT          &kp RIGHT                                                                                                   &kp UP              &kp DOWN
+                                                                    &to 8                     &none               &none    &none   &none                     &to 9
+                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4    &mo 4   &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
 
@@ -309,6 +378,66 @@
                                                                             &cwexitshift BACKSPACE  &cwexitshift DELETE  &cwmagic             &cwmagic           &cwexitshift ENTER  &cwexitshift SPACE
             >;
         };
+
+        TrackballMouse {
+            bindings = <
+&none  &kp LC(LA(F1))  &kp LC(LA(F2))  &kp LA(LC(F3))     &none            &none                       &none  &none  &none  &none  &none  &none
+&none  &none           &kp LC(W)       &ctrl_shift_tab    &kp LC(TAB)      &kp F5                      &none  &none  &none  &none  &none  &none
+&none  &mswarp LGUI 0  &msfast LALT 0  &msnormal LCTRL 0  &msslow LSHFT 0  &tab_switcher               &none  &none  &none  &none  &none  &none
+&none  &kp LC(Z)       &kp LC(X)       &kp LC(C)          &kp LC(V)        &browser_url                &none  &none  &none  &none  &none  &none
+                       &none           &none                                                                         &none  &none
+                                                          &to 0            &none          &none        &none  &none  &none
+                                                          &mkp LCLK        &mkp RCLK      &mkp MCLK    &none  &none  &none
+            >;
+        };
+
+        TrackballScroll {
+            bindings = <
+&none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
+&none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
+&none  &none  &none  &none  &none  &none           &none      &msslow LSHFT 0  &msnormal LCTRL 0  &msfast LALT 0  &mswarp LGUI 0  &none
+&none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
+              &none  &none                                                     &none              &none
+                            &none  &none  &none    &none      &none            &to 0
+                            &none  &none  &none    &mkp MCLK  &mkp RCLK        &mkp LCLK
+            >;
+        };
+
+        MouseScrollSlow {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans                                            &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        MouseScrollFast {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans                                            &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        MouseScrollWarp {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans                                            &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
     };
 };
 
@@ -318,8 +447,8 @@
 //     activate layer 5 until trackball stops moving for 1000ms
 //    <&zip_temp_layer 5 1000>;
 // };
-
 // Configure the left trackball as a scroll wheel.
+
 &trackball_central_listener {
     input-processors =
         <&zip_xy_scaler 1 18>,
