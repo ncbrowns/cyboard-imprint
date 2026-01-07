@@ -274,18 +274,6 @@
             >;
         };
 
-        Auto_Mouse_Layer {
-            bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans     &trans                                                  &trans  &trans
-                                      &trans     &trans  &trans    &trans  &trans  &trans
-                                      &trans     &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
         TabSwitcher {
             bindings = <
 &trans  &trans  &trans    &trans     &trans  &trans            &trans    &trans         &trans     &trans     &trans  &trans
@@ -325,19 +313,16 @@
 };
 
 // right hand trackball configuration
-&trackball_peripheral_listener {
-   input-processors =
+// &trackball_peripheral_listener {
+//   input-processors =
 //     activate layer 5 until trackball stops moving for 1000ms
-    <&zip_temp_layer 5 1000>;
-};
-//left hand trackball configuration
+//    <&zip_temp_layer 5 1000>;
+// };
 
+// Configure the left trackball as a scroll wheel.
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 6 (make it slower for scrolling),,,,,,,,,,
-        <&zip_xy_scaler 1 6>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,
+        <&zip_xy_scaler 1 18>,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
