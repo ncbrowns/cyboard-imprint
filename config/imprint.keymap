@@ -515,4 +515,12 @@
         layers = <12>;
         input-processors = <&zip_xy_scaler 9 1>;
     };
+
+    MouseScroller {
+        layers = <13>;
+        input-processors =
+            <&zip_xy_scaler 1 18>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+    };
 };
