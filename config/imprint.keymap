@@ -337,7 +337,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &mo 13  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
                 &trans  &trans                                            &trans  &trans
                                 &trans  &trans  &trans    &trans  &trans  &trans
