@@ -311,7 +311,7 @@
 &kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                                      &kp H                &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
 &shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                                      &kp N                &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
                                &kp LEFT          &kp RIGHT                                                                                                                              &kp UP              &kp DOWN
-                                                                    &none                     &none               &mouse_layer_hold 8    &mouse_layer_hold 9  &mouse_layer_hold 10      &none
+                                                                    &none                     &none               &mouse_layer_hold 8    &mouse_layer_hold 9  &mouse_layer_hold 10      &mkp LCLK
                                                                     &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4                  &mo 4                &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
@@ -475,6 +475,7 @@
 };
 
 // Configure the left trackball as a scroll wheel.
+
 &trackball_central_listener {
     input-processors =
         <&zip_xy_scaler 1 18>,
@@ -483,6 +484,7 @@
 };
 
 // Configure the right trackball to operate as a mouse pointer.
+
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
 
