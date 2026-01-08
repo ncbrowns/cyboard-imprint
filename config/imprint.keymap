@@ -323,18 +323,6 @@
             >;
         };
 
-        Unused {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
         MouseScroll {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
@@ -400,7 +388,7 @@
     input-processors = <&zip_xy_scaler 1 1>;
 
     MouseScroller {
-        layers = <10>;
+        layers = <9>;
         input-processors =
             <&zip_xy_scaler 1 18>,
             <&zip_xy_to_scroll_mapper>,
@@ -408,17 +396,17 @@
     };
 
     MouseSlow {
-        layers = <11>;
+        layers = <10>;
         input-processors = <&zip_xy_scaler 1 9>;
     };
 
     MouseFast {
-        layers = <12>;
+        layers = <11>;
         input-processors = <&zip_xy_scaler 3 1>;
     };
 
     MouseWarp {
-        layers = <13>;
+        layers = <12>;
         input-processors = <&zip_xy_scaler 9 1>;
     };
 };
