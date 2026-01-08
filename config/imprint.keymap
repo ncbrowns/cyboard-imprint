@@ -108,56 +108,6 @@
             label = "LAYER_ON";
             #binding-cells = <1>;
         };
-
-        msslow: msslow {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MSSLOW";
-            bindings = <&kp>, <&mouse_scroll_slow>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-        };
-
-        msnormal: msnormal {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MSNORMAL";
-            bindings = <&kp>, <&mouse_scroll_normal>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-        };
-
-        msfast: msfast {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MSFAST";
-            bindings = <&kp>, <&mouse_scroll_fast>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-        };
-
-        mswarp: mswarp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MSWARP";
-            bindings = <&kp>, <&mouse_scroll_warp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-        };
-
-        mslayerswitch: mslayerswitch {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MSLAYERSWITCH";
-            bindings = <&to>, <&to>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
     };
 
     macros {
@@ -260,45 +210,6 @@
             bindings = <&tog 7 &mo 4>;
             label = "CWMAGIC";
         };
-
-        mouse_scroll_slow: mouse_slow {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&layer_on 11 &layer_off 12 &layer_off 13>;
-            label = "MOUSE_SLOW";
-        };
-
-        mouse_scroll_normal: mouse_normal {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&layer_off 11 &layer_off 12 &layer_off 13>;
-            label = "MOUSE_NORMAL";
-        };
-
-        mouse_scroll_fast: mouse_scroll_fast {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&layer_off 11 &layer_on 12 &layer_off 13>;
-            label = "MOUSE_SCROLL_FAST";
-        };
-
-        mouse_scroll_warp: mouse_scroll_warp {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&layer_off 11 &layer_off 12 &layer_on 13>;
-            label = "MOUSE_SCROLL_WARP";
-        };
-
-        mouse_layer_hold: mouse_layer_hold {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_param_1to1 &layer_on MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>,
-                <&macro_param_1to1 &layer_off MACRO_PLACEHOLDER &mouse_scroll_normal>;
-
-            label = "MOUSE_LAYER_HOLD";
-        };
     };
 
     keymap {
@@ -306,13 +217,13 @@
 
         Home {
             bindings = <
-&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                                     &kp N6               &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
-&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                                      &kp Y                &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
-&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                                      &kp H                &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
-&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                                      &kp N                &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
-                               &kp LEFT          &kp RIGHT                                                                                                                              &kp UP              &kp DOWN
-                                                                    &none                     &none               &mouse_layer_hold 8    &mouse_layer_hold 9  &mouse_layer_hold 10      &mkp LCLK
-                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4                  &mo 4                &thumb_layer 3 ENTER      &kp SPACE
+&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                       &kp N6     &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
+&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                        &kp Y      &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
+&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                        &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
+&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                        &kp N      &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
+                               &kp LEFT          &kp RIGHT                                                                                                      &kp UP              &kp DOWN
+                                                                    &none                     &none               &none    &mkp LCLK  &mo 8                     &mkp RCLK
+                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4    &mo 4      &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
 
@@ -381,7 +292,7 @@
 &cwexit EQUAL  &kp N1      &kp N2        &kp N3         &kp N4         &kp N5                      &kp N6      &kp N7         &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
 &cwexit TAB    &cwshift Q  &cwshift W    &cwshift E     &cwshift R     &cwshift T                  &cwshift Y  &cwshift U     &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
 &cwexit ESC    &cwshift A  &cwshift S    &cwshift D     &cwshift F     &cwshift G                  &cwshift H  &cwshift J     &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
-&mo 9          &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                  &cwshift N  &cwshift M     &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &mo 9
+&mo 0          &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                  &cwshift N  &cwshift M     &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &mo 0
                            &cwexit LEFT  &cwexit RIGHT                                                                        &cwexit UP     &cwexit DOWN
                                                         &none          &none           &none       &none       &none          &none
                                                         &kp BACKSPACE  &cwexit DELETE  &cwmagic    &cwmagic    &cwexit ENTER  &cwexit SPACE
@@ -400,43 +311,19 @@
             >;
         };
 
-        TrackballLeft {
+        Trackball {
             bindings = <
-&none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
-&none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
-&none  &none  &none  &none  &none  &none           &none      &msslow LSHFT 0  &msnormal LCTRL 0  &msfast LALT 0  &mswarp LGUI 0  &none
-&none  &none  &none  &none  &none  &none           &none      &none            &none              &none           &none           &none
-              &none  &none                                                     &none              &none
-                            &none  &none  &none    &none      &mkp MB4         &mkp MB5
-                            &none  &none  &none    &mkp MCLK  &mkp RCLK        &mkp LCLK
+&trans  &trans    &trans     &trans     &trans     &trans                 &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans    &mo 13     &mo 12     &mo 11     &trans                 &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LGUI  &kp LALT   &kp LCTRL  &kp LSHFT  &mo 10                 &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans    &mkp MCLK  &mkp MB4   &mkp MB5   &trans                 &trans  &trans  &trans  &trans  &trans  &trans
+                  &trans     &trans                                                       &trans  &trans
+                                        &mkp MCLK  &mkp MB5   &trans      &trans  &trans  &trans
+                                        &mkp LCLK  &mkp RCLK  &mkp MB4    &trans  &trans  &trans
             >;
         };
 
-        TrackballRightMouse {
-            bindings = <
-&none  &kp LC(LA(F1))  &kp LC(LA(F2))  &kp LA(LC(F3))     &none            &none                       &none  &none  &none  &none  &none  &none
-&none  &none           &kp LC(W)       &ctrl_shift_tab    &kp LC(TAB)      &kp F5                      &none  &none  &none  &none  &none  &none
-&none  &mswarp LGUI 0  &msfast LALT 0  &msnormal LCTRL 0  &msslow LSHFT 0  &tab_switcher               &none  &none  &none  &none  &none  &none
-&none  &kp LC(Z)       &kp LC(X)       &kp LC(C)          &kp LC(V)        &browser_url                &none  &none  &none  &none  &none  &none
-                       &none           &none                                                                         &none  &none
-                                                          &mkp MB4         &mkp MB5       &none        &none  &none  &none
-                                                          &mkp LCLK        &mkp RCLK      &mkp MCLK    &none  &none  &none
-            >;
-        };
-
-        TrackballRightScroll {
-            bindings = <
-&none  &kp LC(LA(F1))  &kp LC(LA(F2))  &kp LA(LC(F3))     &none            &none                       &none  &none  &none  &none  &none  &none
-&none  &none           &kp LC(W)       &ctrl_shift_tab    &kp LC(TAB)      &kp F5                      &none  &none  &none  &none  &none  &none
-&none  &mswarp LGUI 0  &msfast LALT 0  &msnormal LCTRL 0  &msslow LSHFT 0  &tab_switcher               &none  &none  &none  &none  &none  &none
-&none  &kp LC(Z)       &kp LC(X)       &kp LC(C)          &kp LC(V)        &browser_url                &none  &none  &none  &none  &none  &none
-                       &none           &none                                                                         &none  &none
-                                                          &mkp MB4         &mkp MB5       &none        &none  &none  &none
-                                                          &mkp LCLK        &mkp RCLK      &mkp MCLK    &none  &none  &none
-            >;
-        };
-
-        MouseScrollSlow {
+        Unused {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
@@ -448,7 +335,7 @@
             >;
         };
 
-        MouseScrollFast {
+        MouseScroll {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
@@ -460,7 +347,31 @@
             >;
         };
 
-        MouseScrollWarp {
+        MouseSlow {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans                                            &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        MouseFast {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans                                            &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        MouseWarp {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
