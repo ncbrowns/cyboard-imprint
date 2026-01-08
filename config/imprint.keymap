@@ -93,7 +93,7 @@
             label = "SHIFT_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LSHIFT>, <&to 7>;
+            bindings = <&kp LSHIFT>, <&to 6>;
         };
 
         layer_off: layer_off {
@@ -164,7 +164,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&tog 6>,
+                <&tog 5>,
                 <&macro_press>,
                 <&kp LALT>,
                 <&macro_tap>,
@@ -173,7 +173,7 @@
                 <&macro_release>,
                 <&kp LALT>,
                 <&macro_tap>,
-                <&tog 6>;
+                <&tog 5>;
 
             label = "TAB_SWITCHER";
         };
@@ -195,7 +195,7 @@
         cwexit: cwexit {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&tog 7 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            bindings = <&tog 6 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "CWEXIT";
         };
 
@@ -203,7 +203,7 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings =
-                <&tog 7>,
+                <&tog 6>,
                 <&macro_press>,
                 <&kp LSHFT>,
                 <&macro_tap>,
@@ -217,7 +217,7 @@
         cwmagic: cwmagic {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog 7 &mo 4>;
+            bindings = <&tog 6 &mo 4>;
             label = "CWMAGIC";
         };
     };
@@ -302,7 +302,7 @@
 &cwexit EQUAL  &kp N1      &kp N2        &kp N3         &kp N4         &kp N5                      &kp N6      &kp N7         &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
 &cwexit TAB    &cwshift Q  &cwshift W    &cwshift E     &cwshift R     &cwshift T                  &cwshift Y  &cwshift U     &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
 &cwexit ESC    &cwshift A  &cwshift S    &cwshift D     &cwshift F     &cwshift G                  &cwshift H  &cwshift J     &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
-&mo 0          &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                  &cwshift N  &cwshift M     &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &mo 0
+&mo 7          &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                  &cwshift N  &cwshift M     &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &mo 7
                            &cwexit LEFT  &cwexit RIGHT                                                                        &cwexit UP     &cwexit DOWN
                                                         &none          &none           &none       &none       &none          &none
                                                         &kp BACKSPACE  &cwexit DELETE  &cwmagic    &cwmagic    &cwexit ENTER  &cwexit SPACE
