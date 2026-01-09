@@ -409,19 +409,19 @@
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
 
-    MouseScroller {
-        layers = <9>;
+    MouseScrollerAllDirections {
+        layers = <13>;
         input-processors =
-            <&zip_x_scaler 0 1>,
+            <&zip_x_scaler 1 18>,
             <&zip_y_scaler 1 18>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
-    MouseScrollerAllDirections {
-        layers = <13>;
+    MouseScroller {
+        layers = <9>;
         input-processors =
-            <&zip_x_scaler 1 18>,
+            <&zip_x_scaler 0 1>,
             <&zip_y_scaler 1 18>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
