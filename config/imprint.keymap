@@ -323,25 +323,25 @@
 
         Trackball {
             bindings = <
-&trans  &trans    &trans     &trans     &trans     &trans                 &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &mo 12     &mo 11     &mo 10     &trans                 &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LGUI  &kp LALT   &kp LCTRL  &kp LSHFT  &mo 13                 &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &mkp MCLK  &mkp MB4   &mkp MB5   &trans                 &trans  &trans  &trans  &trans  &trans  &trans
-                  &trans     &trans                                                       &trans  &trans
-                                        &mkp MCLK  &mkp MB5   &trans      &trans  &trans  &trans
-                                        &mkp LCLK  &mkp RCLK  &mkp MB4    &trans  &trans  &trans
+&none  &none     &none      &none      &none      &none                  &none  &none  &none  &none  &none  &none
+&none  &none     &mo 12     &mo 11     &mo 10     &none                  &none  &none  &none  &none  &none  &none
+&none  &kp LGUI  &kp LALT   &kp LCTRL  &kp LSHFT  &mo 13                 &none  &none  &none  &none  &none  &none
+&none  &none     &mkp MCLK  &mkp MB4   &mkp MB5   &none                  &none  &none  &none  &none  &none  &none
+                 &none      &none                                                      &none  &none
+                                       &mkp MCLK  &mkp MB5   &none       &none  &none  &none
+                                       &mkp LCLK  &mkp RCLK  &mkp MB4    &none  &none  &none
             >;
         };
 
         MouseScroll {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &mo 13  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
+&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &mo 13  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
+              &none  &none                                        &none  &none
+                            &none   &none  &none    &none  &none  &none
+                            &none   &none  &none    &none  &none  &none
             >;
         };
 
