@@ -232,20 +232,20 @@
 &kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                        &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K   &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
 &shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                        &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
                                &kp LEFT          &kp RIGHT                                                                                                      &kp UP               &kp DOWN
-                                                                    &none                     &none               &none    &mkp LCLK  &mouse_layer 9 RCLK       &mouse_layer 8 MCLK
+                                                                    &mo 14                    &none               &none    &mkp LCLK  &mouse_layer 9 RCLK       &mouse_layer 8 MCLK
                                                                     &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4    &mo 4      &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
 
         Navigation {
             bindings = <
-&none      &kp LA(LC(F1))  &kp LA(LC(F2))  &kp LA(LC(F3))   &none        &none                   &kp TILDE       &kp INS           &none             &none              &none           &none
-&none      &none           &kp LC(W)       &ctrl_shift_tab  &kp LC(TAB)  &kp F5                  &kp HOME        &kp PAGE_DOWN     &kp PG_UP         &kp END            &thanks_pat     &kp LC(LA(K))
-&none      &kp LGUI        &kp LALT        &kp LCTRL        &kp LSHFT    &tab_switcher           &kp LEFT        &kp DOWN          &kp UP            &kp RIGHT          &kp GRAVE       &kp LC(PAUSE_BREAK)
-&kp LSHFT  &kp LC(Z)       &kp LC(X)       &kp LC(C)        &kp LC(V)    &browser_url            &kp LEFT_BRACE  &kp RIGHT_BRACE   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &triple_bquote  &kp RSHFT
-                           &kp LEFT        &kp RIGHT                                                                               &kp UP            &kp DOWN
-                                                            &none        &none          &none    &kp C_VOL_DN    &kp C_MUTE        &kp C_VOL_UP
-                                                            &none        &none          &none    &kp C_PREV      &kp C_PLAY_PAUSE  &kp C_NEXT
+&none       &kp LA(LC(F1))  &kp LA(LC(F2))  &kp LA(LC(F3))   &none        &none                   &kp TILDE       &kp INS           &none             &none              &none           &none
+&kp TAB     &none           &kp LC(W)       &ctrl_shift_tab  &kp LC(TAB)  &kp F5                  &kp HOME        &kp PAGE_DOWN     &kp PG_UP         &kp END            &thanks_pat     &kp LC(LA(K))
+&kp ESCAPE  &kp LGUI        &kp LALT        &kp LCTRL        &kp LSHFT    &tab_switcher           &kp LEFT        &kp DOWN          &kp UP            &kp RIGHT          &kp GRAVE       &kp LC(PAUSE_BREAK)
+&kp LSHFT   &kp LC(Z)       &kp LC(X)       &kp LC(C)        &kp LC(V)    &browser_url            &kp LEFT_BRACE  &kp RIGHT_BRACE   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &triple_bquote  &kp RSHFT
+                            &kp LEFT        &kp RIGHT                                                                               &kp UP            &kp DOWN
+                                                             &none        &none          &none    &kp C_VOL_DN    &kp C_MUTE        &kp C_VOL_UP
+                                                             &none        &none          &none    &kp C_PREV      &kp C_PLAY_PAUSE  &kp C_NEXT
             >;
         };
 
@@ -390,6 +390,18 @@
                 &trans  &trans                                            &trans  &trans
                                 &trans  &trans  &trans    &trans  &trans  &trans
                                 &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        MouseEmulation {
+            bindings = <
+&none      &none      &none      &none            &none        &none                   &none           &none           &none         &none            &none  &none
+&kp TAB    &none      &kp LC(W)  &ctrl_shift_tab  &kp LC(TAB)  &kp F5                  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &none  &none
+&kp ESC    &kp LGUI   &kp LALT   &kp LCTRL        &kp LSHFT    &tab_switcher           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &none  &none
+&kp LSHFT  &kp LC(Z)  &kp LC(X)  &kp LC(C)        &kp LC(V)    &browser_url            &none           &none           &none         &none            &none  &kp RSHFT
+                      &none      &none                                                                                 &none         &none
+                                                  &none        &none          &none    &none           &mkp MB5        &mkp MCLK
+                                                  &none        &none          &none    &mkp MB4        &mkp RCLK       &mkp LCLK
             >;
         };
     };
