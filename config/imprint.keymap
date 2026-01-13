@@ -232,7 +232,7 @@
 &kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                        &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K   &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
 &shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                        &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
                                &kp LEFT          &kp RIGHT                                                                                                      &kp UP               &kp DOWN
-                                                                    &mo 14                    &none               &none    &mkp LCLK  &mouse_layer 9 RCLK       &mouse_layer 8 MCLK
+                                                                    &mo 14                    &none               &none    &mkp LCLK  &mouse_layer 9 MCLK       &mouse_layer 8 RCLK
                                                                     &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4    &mo 4      &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
