@@ -227,13 +227,13 @@
 
         Home {
             bindings = <
-&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                       &kp N6     &kp N7                    &kp N8               &kp N9             &kp N0                &kp MINUS
-&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                        &kp Y      &kp U                     &kp I                &kp O              &kp P                 &kp BSLH
-&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                        &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K   &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
-&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                        &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
-                               &kp LEFT          &kp RIGHT                                                                                                      &kp UP               &kp DOWN
-                                                                    &mkp MB4                  &mkp MB5            &none    &mkp LCLK  &mouse_layer 9 MCLK       &mouse_layer 8 RCLK
-                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4    &mo 4      &thumb_layer 3 ENTER      &kp SPACE
+&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                           &kp N6     &kp N7                    &kp N8               &kp N9             &kp N0                &kp MINUS
+&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                            &kp Y      &kp U                     &kp I                &kp O              &kp P                 &kp BSLH
+&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                            &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K   &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
+&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                            &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
+                               &kp LEFT          &kp RIGHT                                                                                                          &kp UP               &kp DOWN
+                                                                    &mkp MB4                  &mkp MB5            &mkp LCLK    &mkp LCLK  &mouse_layer 9 MCLK       &mouse_layer 8 RCLK
+                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4        &mo 4      &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
 
