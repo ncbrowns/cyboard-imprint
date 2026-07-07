@@ -222,6 +222,15 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        EscapeCorners {
+            bindings = <&kp ESC>;
+            key-positions = <0 11>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
