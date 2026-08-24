@@ -136,18 +136,6 @@
             require-prior-idle-ms = <250>;
             flavor = "balanced";
             hold-trigger-on-release;
-            bindings = <&cwexitlayer>, <&kp>;
-        };
-
-        cw_thumb_layer_exit: cw_thumb_layer_exit {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CW_THUMB_LAYER_EXIT";
-            #binding-cells = <2>;
-            tapping-term-ms = <500>;
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <250>;
-            flavor = "balanced";
-            hold-trigger-on-release;
             bindings = <&cwexitlayer>, <&cwexit>;
         };
     };
@@ -268,6 +256,20 @@
 
             label = "CWEXITLAYER";
         };
+
+        cwthumb1: cwthumb1 {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&tog 6 &macro_param_1to1 &macro_param_2to2 &thumb_layer MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+            label = "CWTHUMB1";
+        };
+
+        cwthumbbs: cwthumbbs {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&tog 6 &macro_param_1to1 &macro_param_2to2 &thumb_layer MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+            label = "CWTHUMBBS";
+        };
     };
 
     combos { compatible = "zmk,combos"; };
@@ -349,25 +351,25 @@
 
         CapsWord {
             bindings = <
-&cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4                          &kp N5                                     &kp N6      &kp N7                        &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
-&cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R                      &cwshift T                                 &cwshift Y  &cwshift U                    &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
-&cwexit ESC     &cwshift A  &cwshift S    &cwshift D     &cwshift F                      &cwshift G                                 &cwshift H  &cwshift J                    &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
-&cw_shift_caps  &cwshift Z  &cwshift X    &cwshift C     &cwshift V                      &cwshift B                                 &cwshift N  &cwshift M                    &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &cw_shift_caps
-                            &cwexit LEFT  &cwexit RIGHT                                                                                                                       &cwexit UP     &cwexit DOWN
-                                                         &none                           &none                          &none       &none       &none                         &none
-                                                         &cw_thumb_layer_bs 1 BACKSPACE  &cw_thumb_layer_exit 2 DELETE  &cwmagic    &cwmagic    &cw_thumb_layer_exit 3 ENTER  &cwexit SPACE
+&cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4                  &kp N5                          &kp N6      &kp N7             &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
+&cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R              &cwshift T                      &cwshift Y  &cwshift U         &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
+&cwexit ESC     &cwshift A  &cwshift S    &cwshift D     &cwshift F              &cwshift G                      &cwshift H  &cwshift J         &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
+&cw_shift_caps  &cwshift Z  &cwshift X    &cwshift C     &cwshift V              &cwshift B                      &cwshift N  &cwshift M         &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &cw_shift_caps
+                            &cwexit LEFT  &cwexit RIGHT                                                                                         &cwexit UP     &cwexit DOWN
+                                                         &none                   &none               &none       &none       &none              &none
+                                                         &cwthumbbs 1 BACKSPACE  &cwthumb1 2 DELETE  &cwmagic    &cwmagic    &cwthumb1 3 ENTER  &cwexit SPACE
             >;
         };
 
         CapsWordShifted {
             bindings = <
-&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4                     &cwexitshift N5                                &cwexitshift N6  &cwexitshift N7                   &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
-&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R                          &cwshift T                                     &cwshift Y       &cwshift U                        &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
-&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F                          &cwshift G                                     &cwshift H       &cwshift J                        &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
-&cw_shift_caps      &cwshift Z       &cwshift X         &cwshift C          &cwshift V                          &cwshift B                                     &cwshift N       &cwshift M                        &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &cw_shift_caps
-                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                                                        &cwexitshift UP     &cwexitshift DOWN
-                                                                            &none                               &none                              &none       &none            &none                             &none
-                                                                            &cw_thumb_layer_bs 1 LS(BACKSPACE)  &cw_thumb_layer_exit 2 LS(DELETE)  &cwmagic    &cwmagic         &cw_thumb_layer_exit 3 LS(ENTER)  &cwexitshift SPACE
+&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4             &cwexitshift N5                     &cwexitshift N6  &cwexitshift N7        &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
+&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R                  &cwshift T                          &cwshift Y       &cwshift U             &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
+&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F                  &cwshift G                          &cwshift H       &cwshift J             &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
+&cw_shift_caps      &cwshift Z       &cwshift X         &cwshift C          &cwshift V                  &cwshift B                          &cwshift N       &cwshift M             &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &cw_shift_caps
+                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                          &cwexitshift UP     &cwexitshift DOWN
+                                                                            &none                       &none                   &none       &none            &none                  &none
+                                                                            &cwthumbbs 1 LS(BACKSPACE)  &cwthumb1 2 LS(DELETE)  &cwmagic    &cwmagic         &cwthumb1 3 LS(ENTER)  &cwexitshift SPACE
             >;
         };
 
