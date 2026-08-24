@@ -361,18 +361,6 @@
                                                                             &cw_thumb_layer_bs 1 LS(BACKSPACE)  &cw_thumb_layer_exit 2 LS(DELETE)  &cwexit_thumblayer 4    &cwexit_thumblayer 4  &cw_thumb_layer_exit 3 LS(ENTER)  &cwexitshift SPACE
             >;
         };
-
-        MouseScroll {
-            bindings = <
-&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &mo 0  &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
-              &none  &none                                       &none  &none
-                            &none  &none  &none    &none  &none  &none
-                            &none  &none  &none    &none  &none  &none
-            >;
-        };
     };
 };
 
@@ -389,37 +377,4 @@
 
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
-
-    MouseScrollerAllDirections {
-        layers = <13>;
-        input-processors =
-            <&zip_x_scaler 1 18>,
-            <&zip_y_scaler 1 18>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-
-    MouseScroller {
-        layers = <9>;
-        input-processors =
-            <&zip_x_scaler 0 1>,
-            <&zip_y_scaler 1 18>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-
-    MouseSlow {
-        layers = <10>;
-        input-processors = <&zip_xy_scaler 1 9>;
-    };
-
-    MouseFast {
-        layers = <11>;
-        input-processors = <&zip_xy_scaler 3 1>;
-    };
-
-    MouseWarp {
-        layers = <12>;
-        input-processors = <&zip_xy_scaler 9 1>;
-    };
 };
