@@ -126,6 +126,30 @@
             tapping-term-ms = <200>;
             bindings = <&mo 7>, <&tog 6>;
         };
+
+        cw_thumb_layer_bs: cw_thumb_layer_bs {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CW_THUMB_LAYER_BS";
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            quick-tap-ms = <300>;
+            require-prior-idle-ms = <250>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            bindings = <&cwexit_thumblayer>, <&kp>;
+        };
+
+        cw_thumb_layer_exit: cw_thumb_layer_exit {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CW_THUMB_LAYER_EXIT";
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            quick-tap-ms = <300>;
+            require-prior-idle-ms = <250>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            bindings = <&cwexit_thumblayer>, <&cwexit>;
+        };
     };
 
     macros {
@@ -222,25 +246,18 @@
             label = "CWEXITSHIFT";
         };
 
-        cwmagic: cwmagic {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&tog 6 &mo 4>;
-            label = "CWMAGIC";
-        };
-
         cwexit_thumblayer: cwexit_thumblayer {
-            compatible = "zmk,behavior-macro-two-param";
-            #binding-cells = <2>;
-            bindings = <&tog 6 &macro_param_1to1 &macro_param_2to2 &thumb_layer MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
-            label = "CWEXIT_THUMBLAYER";
-        };
-
-        cwexit_layer: cwexit_layer {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&tog 6 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "CWEXIT_LAYER";
+            bindings =
+                <&tog 6>,
+                <&macro_press>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>;
+
+            label = "CWEXIT_THUMBLAYER";
         };
     };
 
@@ -251,12 +268,12 @@
 
         Home {
             bindings = <
-&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                           &kp N6     &kp N7                    &kp N8               &kp N9             &kp N0                &kp MINUS
-&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                            &kp Y      &kp U                     &kp I                &kp O              &kp P                 &kp BSLH
-&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                            &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K   &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
-&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                            &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
-                               &kp LEFT          &kp RIGHT                                                                                                          &kp UP               &kp DOWN
-                                                                    &mkp MB4                  &mkp MB5            &mkp LCLK    &mkp LCLK  &mouse_layer 9 MCLK       &mouse_layer 8 RCLK
+&kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                           &kp N6     &kp N7                    &kp N8              &kp N9             &kp N0                &kp MINUS
+&kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                            &kp Y      &kp U                     &kp I               &kp O              &kp P                 &kp BSLH
+&kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                            &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K  &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
+&shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                            &kp N      &kp M                     &kp COMMA           &kp DOT            &kp FSLH              &shift_caps
+                               &kp LEFT          &kp RIGHT                                                                                                          &kp UP              &kp DOWN
+                                                                    &mkp MB4                  &mkp MB5            &mkp LCLK    &mkp LCLK  &mouse_layer 8 MCLK       &mkp RCLK
                                                                     &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4        &mo 4      &thumb_layer 3 ENTER      &kp SPACE
             >;
         };
@@ -323,97 +340,37 @@
 
         CapsWord {
             bindings = <
-&cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4         &kp N5                                   &kp N6      &kp N7                      &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
-&cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R     &cwshift T                               &cwshift Y  &cwshift U                  &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
-&cwexit ESC     &cwshift A  &cwshift S    &cwshift D     &cwshift F     &cwshift G                               &cwshift H  &cwshift J                  &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
-&cw_shift_caps  &cwshift Z  &cwshift X    &cwshift C     &cwshift V     &cwshift B                               &cwshift N  &cwshift M                  &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &cw_shift_caps
-                            &cwexit LEFT  &cwexit RIGHT                                                                                                  &cwexit UP     &cwexit DOWN
-                                                         &trans         &trans                       &trans      &trans      &trans                      &trans
-                                                         &kp BACKSPACE  &cwexit_thumblayer 2 DELETE  &cwmagic    &cwmagic    &cwexit_thumblayer 3 ENTER  &cwexit SPACE
+&cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4                          &kp N5                                                 &kp N6                &kp N7                        &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
+&cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R                      &cwshift T                                             &cwshift Y            &cwshift U                    &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
+&cwexit ESC     &cwshift A  &cwshift S    &cwshift D     &cwshift F                      &cwshift G                                             &cwshift H            &cwshift J                    &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
+&cw_shift_caps  &cwshift Z  &cwshift X    &cwshift C     &cwshift V                      &cwshift B                                             &cwshift N            &cwshift M                    &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &cw_shift_caps
+                            &cwexit LEFT  &cwexit RIGHT                                                                                                                                             &cwexit UP     &cwexit DOWN
+                                                         &trans                          &trans                         &trans                  &trans                &trans                        &trans
+                                                         &cw_thumb_layer_bs 1 BACKSPACE  &cw_thumb_layer_exit 2 DELETE  &cwexit_thumblayer 4    &cwexit_thumblayer 4  &cw_thumb_layer_exit 3 ENTER  &cwexit SPACE
             >;
         };
 
         CapsWordShifted {
             bindings = <
-&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4         &cwexitshift N5                              &cwexitshift N6  &cwexitshift N7     &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
-&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R              &cwshift T                                   &cwshift Y       &cwshift U          &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
-&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F              &cwshift G                                   &cwshift H       &cwshift J          &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
-&none               &cwshift Z       &cwshift X         &cwshift C          &cwshift V              &cwshift B                                   &cwshift N       &cwshift M          &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &none
-                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                            &cwexitshift UP     &cwexitshift DOWN
-                                                                            &trans                  &trans                           &trans      &trans           &trans              &trans
-                                                                            &cwexitshift BACKSPACE  &cwexit_thumblayer 2 LS(DELETE)  &cwmagic    &cwmagic         &cwexitshift ENTER  &cwexitshift SPACE
-            >;
-        };
-
-        Trackball {
-            bindings = <
-&none  &none     &none      &none      &none      &none                  &none  &none  &none  &none  &none  &none
-&none  &none     &mo 12     &mo 11     &mo 10     &none                  &none  &none  &none  &none  &none  &none
-&none  &kp LGUI  &kp LALT   &kp LCTRL  &kp LSHFT  &mo 13                 &none  &none  &none  &none  &none  &none
-&none  &none     &mkp MCLK  &mkp MB4   &mkp MB5   &none                  &none  &none  &none  &none  &none  &none
-                 &none      &none                                                      &none  &none
-                                       &mkp MCLK  &mkp MB5   &none       &none  &none  &none
-                                       &mkp LCLK  &mkp RCLK  &mkp MB4    &none  &none  &none
+&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4                     &cwexitshift N5                                            &cwexitshift N6       &cwexitshift N7                   &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
+&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R                          &cwshift T                                                 &cwshift Y            &cwshift U                        &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
+&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F                          &cwshift G                                                 &cwshift H            &cwshift J                        &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
+&none               &cwshift Z       &cwshift X         &cwshift C          &cwshift V                          &cwshift B                                                 &cwshift N            &cwshift M                        &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &none
+                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                                                                         &cwexitshift UP     &cwexitshift DOWN
+                                                                            &trans                              &trans                             &trans                  &trans                &trans                            &trans
+                                                                            &cw_thumb_layer_bs 1 LS(BACKSPACE)  &cw_thumb_layer_exit 2 LS(DELETE)  &cwexit_thumblayer 4    &cwexit_thumblayer 4  &cw_thumb_layer_exit 3 LS(ENTER)  &cwexitshift SPACE
             >;
         };
 
         MouseScroll {
             bindings = <
-&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &mo 13  &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-              &none  &none                                        &none  &none
-                            &none   &none  &none    &none  &none  &none
-                            &none   &none  &none    &none  &none  &none
-            >;
-        };
-
-        MouseSlow {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        MouseFast {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        MouseWarp {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        MouseScrollAllDirections {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
+&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &mo 0  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
+              &none  &none                                       &none  &none
+                            &none  &none  &none    &none  &none  &none
+                            &none  &none  &none    &none  &none  &none
             >;
         };
     };
