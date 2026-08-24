@@ -124,7 +124,7 @@
             label = "CW_SHIFT_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 7>, <&to 6>;
+            bindings = <&mo 7>, <&tog 6>;
         };
     };
 
