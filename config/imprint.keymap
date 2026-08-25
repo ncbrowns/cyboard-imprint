@@ -93,7 +93,7 @@
             label = "SHIFT_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LSHIFT>, <&to 6>;
+            bindings = <&kp LSHIFT>, <&to 1>;
         };
 
         layer_off: layer_off {
@@ -124,7 +124,7 @@
             label = "CW_SHIFT_CAPS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 7>, <&tog 6>;
+            bindings = <&mo 7>, <&tog 1>;
         };
 
         cw_thumb_layer_bs: cw_thumb_layer_bs {
@@ -196,7 +196,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&tog 5>,
+                <&tog 6>,
                 <&macro_press>,
                 <&kp LALT>,
                 <&macro_tap>,
@@ -205,7 +205,7 @@
                 <&macro_release>,
                 <&kp LALT>,
                 <&macro_tap>,
-                <&tog 5>;
+                <&tog 6>;
 
             label = "TAB_SWITCHER";
         };
@@ -227,7 +227,7 @@
         cwexit: cwexit {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&tog 6 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            bindings = <&tog 1 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "CWEXIT";
         };
 
@@ -235,7 +235,7 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings =
-                <&tog 6>,
+                <&tog 1>,
                 <&macro_press>,
                 <&kp LSHFT>,
                 <&macro_tap>,
@@ -249,7 +249,7 @@
         cwmagic: cwmagic {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog 6 &mo 4>;
+            bindings = <&tog 1 &mo 5>;
             label = "CWMAGIC";
         };
 
@@ -258,13 +258,11 @@
             #binding-cells = <1>;
             bindings =
                 <&macro_press>,
-                <&tog 6 &macro_param_1to1>,
-                <&macro_press>,
-                <&mo MACRO_PLACEHOLDER>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>,
                 <&macro_pause_for_release>,
                 <&macro_param_1to1>,
                 <&macro_release>,
-                <&mo MACRO_PLACEHOLDER>;
+                <&mo MACRO_PLACEHOLDER &mo 1>;
 
             label = "CWEXITLAYER";
         };
@@ -283,7 +281,19 @@
 &shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                            &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
                                &kp LEFT          &kp RIGHT                                                                                                          &kp UP               &kp DOWN
                                                                     &mkp MB4                  &mkp MB5            &mkp LCLK    &mkp LCLK  &mouse_layer 9 MCLK       &mouse_layer 8 RCLK
-                                                                    &thumb_layer 1 BACKSPACE  &thumb_layer 2 DEL  &mo 4        &mo 4      &thumb_layer 3 ENTER      &kp SPACE
+                                                                    &thumb_layer 2 BACKSPACE  &thumb_layer 3 DEL  &mo 5        &mo 5      &thumb_layer 4 ENTER      &kp SPACE
+            >;
+        };
+
+        CapsWord {
+            bindings = <
+&cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4                          &kp N5                                     &kp N6      &kp N7                        &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
+&cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R                      &cwshift T                                 &cwshift Y  &cwshift U                    &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
+&cwexit ESC     &cwshift A  &cwshift S    &cwshift D     &cwshift F                      &cwshift G                                 &cwshift H  &cwshift J                    &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
+&cw_shift_caps  &cwshift Z  &cwshift X    &cwshift C     &cwshift V                      &cwshift B                                 &cwshift N  &cwshift M                    &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &cw_shift_caps
+                            &cwexit LEFT  &cwexit RIGHT                                                                                                                       &cwexit UP     &cwexit DOWN
+                                                         &none                           &none                          &none       &none       &none                         &none
+                                                         &cw_thumb_layer_bs 2 BACKSPACE  &cw_thumb_layer_exit 3 DELETE  &cwmagic    &cwmagic    &cw_thumb_layer_exit 4 ENTER  &cwexit SPACE
             >;
         };
 
@@ -347,18 +357,6 @@
             >;
         };
 
-        CapsWord {
-            bindings = <
-&cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4                          &kp N5                                     &kp N6      &kp N7                        &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
-&cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R                      &cwshift T                                 &cwshift Y  &cwshift U                    &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
-&cwexit ESC     &cwshift A  &cwshift S    &cwshift D     &cwshift F                      &cwshift G                                 &cwshift H  &cwshift J                    &cwshift K     &cwshift L      &cwexit SEMICOLON  &cwexit SQT
-&cw_shift_caps  &cwshift Z  &cwshift X    &cwshift C     &cwshift V                      &cwshift B                                 &cwshift N  &cwshift M                    &cwexit COMMA  &cwexit PERIOD  &cwexit SLASH      &cw_shift_caps
-                            &cwexit LEFT  &cwexit RIGHT                                                                                                                       &cwexit UP     &cwexit DOWN
-                                                         &none                           &none                          &none       &none       &none                         &none
-                                                         &cw_thumb_layer_bs 1 BACKSPACE  &cw_thumb_layer_exit 2 DELETE  &cwmagic    &cwmagic    &cw_thumb_layer_exit 3 ENTER  &cwexit SPACE
-            >;
-        };
-
         CapsWordShifted {
             bindings = <
 &cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4                     &cwexitshift N5                                &cwexitshift N6  &cwexitshift N7                   &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
@@ -367,7 +365,7 @@
 &cw_shift_caps      &cwshift Z       &cwshift X         &cwshift C          &cwshift V                          &cwshift B                                     &cwshift N       &cwshift M                        &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &cw_shift_caps
                                      &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                                                        &cwexitshift UP     &cwexitshift DOWN
                                                                             &none                               &none                              &none       &none            &none                             &none
-                                                                            &cw_thumb_layer_bs 1 LS(BACKSPACE)  &cw_thumb_layer_exit 2 LS(DELETE)  &cwmagic    &cwmagic         &cw_thumb_layer_exit 3 LS(ENTER)  &cwexitshift SPACE
+                                                                            &cw_thumb_layer_bs 2 LS(BACKSPACE)  &cw_thumb_layer_exit 3 LS(DELETE)  &cwmagic    &cwmagic         &cw_thumb_layer_exit 4 LS(ENTER)  &cwexitshift SPACE
             >;
         };
 
