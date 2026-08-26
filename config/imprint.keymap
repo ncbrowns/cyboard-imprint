@@ -437,7 +437,6 @@
 };
 
 // Configure the left trackball as a scroll wheel.
-
 &trackball_central_listener {
     input-processors =
         <&zip_xy_scaler 1 18>,
@@ -446,7 +445,6 @@
 };
 
 // Configure the right trackball to operate as a mouse pointer.
-
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
 
