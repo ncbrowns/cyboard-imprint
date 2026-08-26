@@ -436,6 +436,7 @@
     };
 };
 
+
 // Configure the left trackball as a scroll wheel.
 &trackball_central_listener {
     input-processors =
