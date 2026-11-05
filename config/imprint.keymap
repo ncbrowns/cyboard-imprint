@@ -267,6 +267,7 @@
         compatible = "zmk,keymap";
 
         Home {
+            display-name = "Home";
             bindings = <
 &kp EQUAL    &kp N1            &kp N2            &kp N3             &kp N4                    &kp N5                           &kp N6     &kp N7                    &kp N8               &kp N9             &kp N0                &kp MINUS
 &kp TAB      &kp Q             &kp W             &kp E              &kp R                     &kp T                            &kp Y      &kp U                     &kp I                &kp O              &kp P                 &kp BSLH
@@ -279,6 +280,7 @@
         };
 
         CapsWord {
+            display-name = "CapsWord";
             bindings = <
 &cwexit EQUAL   &kp N1      &kp N2        &kp N3         &kp N4                          &kp N5                                           &kp N6          &kp N7                        &kp N8         &kp N9          &kp N0             &cwminus MINUS UNDER
 &cwexit TAB     &cwshift Q  &cwshift W    &cwshift E     &cwshift R                      &cwshift T                                       &cwshift Y      &cwshift U                    &cwshift I     &cwshift O      &cwshift P         &cwexit BACKSLASH
@@ -291,6 +293,7 @@
         };
 
         CapsWordShifted {
+            display-name = "CapsWordShifted";
             bindings = <
 &cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4                       &cwexitshift N5                                        &cwexitshift N6  &cwexitshift N7                     &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
 &cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R                            &cwshift T                                             &cwshift Y       &cwshift U                          &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
@@ -303,6 +306,7 @@
         };
 
         Navigation {
+            display-name = "Navigation";
             bindings = <
 &none       &kp LA(LC(F1))  &kp LA(LC(F2))  &kp LA(LC(F3))   &mkp MB4     &mkp MB5                &kp TILDE       &kp INS           &none             &none              &none           &none
 &kp TAB     &none           &kp LC(W)       &ctrl_shift_tab  &kp LC(TAB)  &kp F5                  &kp HOME        &kp PAGE_DOWN     &kp PG_UP         &kp END            &thanks_pat     &kp LG(LA(K))
@@ -315,6 +319,7 @@
         };
 
         Function {
+            display-name = "Function";
             bindings = <
 &none  &none     &none     &none      &none      &none           &none            &none   &none    &none    &none    &none
 &none  &none     &none     &none      &none      &none           &kp PRINTSCREEN  &kp F9  &kp F10  &kp F11  &kp F12  &none
@@ -327,6 +332,7 @@
         };
 
         Symbol {
+            display-name = "Symbol";
             bindings = <
 &none      &none  &none  &none           &none            &none           &none  &none      &none      &none     &none     &none
 &none      &none  &none  &kp LPAR        &kp RPAR         &none           &none  &none      &none      &none     &none     &none
@@ -339,6 +345,7 @@
         };
 
         Keyboard_Control_Layer {
+            display-name = "Keyboard_Control_Layer";
             bindings = <
 &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4             &none                             &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &none            &none            &none
 &sys_reset   &none         &none         &none         &none         &studio_unlock           &studio_unlock                    &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
@@ -351,6 +358,7 @@
         };
 
         TabSwitcher {
+            display-name = "TabSwitcher";
             bindings = <
 &none  &none  &none     &none      &none  &none           &none     &none          &none      &none      &none  &none
 &none  &none  &none     &none      &none  &none           &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END    &none  &none
@@ -363,6 +371,7 @@
         };
 
         MouseScroll {
+            display-name = "MouseScroll";
             bindings = <
 &none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
@@ -375,6 +384,7 @@
         };
 
         MouseScrollAllDirections {
+            display-name = "MouseScrollAllDirections";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
@@ -403,7 +413,7 @@
     input-processors = <&zip_xy_scaler 1 1>;
 
     MouseScrollerAllDirections {
-        layers = <13>;
+        layers = <10>;
         input-processors =
             <&zip_x_scaler 1 18>,
             <&zip_y_scaler 1 18>,
@@ -418,20 +428,5 @@
             <&zip_y_scaler 1 18>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-
-    MouseSlow {
-        layers = <10>;
-        input-processors = <&zip_xy_scaler 1 9>;
-    };
-
-    MouseFast {
-        layers = <11>;
-        input-processors = <&zip_xy_scaler 3 1>;
-    };
-
-    MouseWarp {
-        layers = <12>;
-        input-processors = <&zip_xy_scaler 9 1>;
     };
 };
