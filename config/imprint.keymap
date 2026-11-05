@@ -273,7 +273,7 @@
 &kp ESC      &hrm_left LWIN A  &hrm_left LALT S  &hrm_left LCTRL D  &hrm_left_index LSHFT F   &kp G                            &kp H      &hrm_right_index RSHFT J  &hrm_right RCTRL K   &hrm_right RALT L  &hrm_right RWIN SEMI  &kp SQT
 &shift_caps  &kp Z             &kp X             &kp C              &kp V                     &kp B                            &kp N      &kp M                     &kp COMMA            &kp DOT            &kp FSLH              &shift_caps
                                &kp LEFT          &kp RIGHT                                                                                                          &kp UP               &kp DOWN
-                                                                    &mkp MB4                  &mkp MB5            &mkp LCLK    &mkp LCLK  &mouse_layer 9 MCLK       &mouse_layer 8 RCLK
+                                                                    &mkp MB4                  &mkp MB5            &mkp LCLK    &mkp LCLK  &mouse_layer 8 MCLK       &mouse_layer 9 RCLK
                                                                     &thumb_layer 3 BACKSPACE  &thumb_layer 4 DEL  &mo 6        &mo 6      &thumb_layer 5 ENTER      &kp SPACE
             >;
         };
@@ -292,13 +292,13 @@
 
         CapsWordShifted {
             bindings = <
-&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4                     &cwexitshift N5                                      &cwexitshift N6  &cwexitshift N7                   &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
-&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R                          &cwshift T                                           &cwshift Y       &cwshift U                        &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
-&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F                          &cwshift G                                           &cwshift H       &cwshift J                        &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
-&cw_shift_caps      &cwshift Z       &cwshift X         &cwshift C          &cwshift V                          &cwshift B                                           &cwshift N       &cwshift M                        &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &cw_shift_caps
-                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                                                              &cwexitshift UP     &cwexitshift DOWN
-                                                                            &trans                              &trans                             &trans            &trans           &trans                            &trans
-                                                                            &cw_thumb_layer_bs 3 LS(BACKSPACE)  &cw_thumb_layer_exit 4 LS(DELETE)  &cwexitlayer 6    &cwexitlayer 6   &cw_thumb_layer_exit 5 LS(ENTER)  &cwexitshift SPACE
+&cwexitshift EQUAL  &cwexitshift N1  &cwexitshift N2    &cwexitshift N3     &cwexitshift N4                       &cwexitshift N5                                        &cwexitshift N6  &cwexitshift N7                     &cwexitshift N8     &cwexitshift N9      &cwexitshift N0         &kp UNDER
+&cwexitshift TAB    &cwshift Q       &cwshift W         &cwshift E          &cwshift R                            &cwshift T                                             &cwshift Y       &cwshift U                          &cwshift I          &cwshift O           &cwshift P              &cwexitshift BACKSLASH
+&cwexitshift ESC    &cwshift A       &cwshift S         &cwshift D          &cwshift F                            &cwshift G                                             &cwshift H       &cwshift J                          &cwshift K          &cwshift L           &cwexitshift SEMICOLON  &cwexitshift SQT
+&cw_shift_caps      &cwshift Z       &cwshift X         &cwshift C          &cwshift V                            &cwshift B                                             &cwshift N       &cwshift M                          &cwexitshift COMMA  &cwexitshift PERIOD  &cwexitshift SLASH      &cw_shift_caps
+                                     &cwexitshift LEFT  &cwexitshift RIGHT                                                                                                                                                    &cwexitshift UP     &cwexitshift DOWN
+                                                                            &trans                                &trans                               &trans            &trans           &trans                              &trans
+                                                                            &cw_thumb_layer_bs (3) LS(BACKSPACE)  &cw_thumb_layer_exit (4) LS(DELETE)  &cwexitlayer 6    &cwexitlayer 6   &cw_thumb_layer_exit (5) LS(ENTER)  &cwexitshift SPACE
             >;
         };
 
@@ -362,63 +362,15 @@
             >;
         };
 
-        Trackball {
-            bindings = <
-&none  &none     &none      &none      &none      &none                  &none  &none  &none  &none  &none  &none
-&none  &none     &mo 12     &mo 11     &mo 10     &none                  &none  &none  &none  &none  &none  &none
-&none  &kp LGUI  &kp LALT   &kp LCTRL  &kp LSHFT  &mo 13                 &none  &none  &none  &none  &none  &none
-&none  &none     &mkp MCLK  &mkp MB4   &mkp MB5   &none                  &none  &none  &none  &none  &none  &none
-                 &none      &none                                                      &none  &none
-                                       &mkp MCLK  &mkp MB5   &none       &none  &none  &none
-                                       &mkp LCLK  &mkp RCLK  &mkp MB4    &none  &none  &none
-            >;
-        };
-
         MouseScroll {
             bindings = <
-&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &mo 13  &none           &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-              &none  &none                                        &none  &none
-                            &none   &none  &none    &none  &none  &none
-                            &none   &none  &none    &none  &none  &none
-            >;
-        };
-
-        MouseSlow {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        MouseFast {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        MouseWarp {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans                                            &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans  &trans
+&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &mo 9  &none           &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none           &none  &none  &none  &none  &none  &none
+              &none  &none                                       &none  &none
+                            &none  &none  &none    &none  &none  &none
+                            &none  &none  &none    &none  &none  &none
             >;
         };
 
@@ -437,6 +389,7 @@
 };
 
 // Configure the left trackball as a scroll wheel.
+
 &trackball_central_listener {
     input-processors =
         <&zip_xy_scaler 1 18>,
@@ -445,6 +398,7 @@
 };
 
 // Configure the right trackball to operate as a mouse pointer.
+
 &trackball_peripheral_listener {
     input-processors = <&zip_xy_scaler 1 1>;
 
